@@ -17,7 +17,7 @@ export default function Index({ employees, query }) {
         <div className="p-6 max-w-4xl mx-auto">
 
                         {/* main page */}
-            <FlashMessage flash={flash} />
+            <FlashMessage flash={flash} />  
             <h1 className="text-2xl font-bold mb-6">Employee List</h1>
 
             <form onSubmit={handleSearch} className="mb-6">

@@ -1,31 +1,32 @@
 import React from 'react';
 import { useForm } from '@inertiajs/react';
 
-export default function Create({ departments }) {
+
+export default function Create({ departments }) { 
     const gender = ['Male', 'Female'];
     const { data, setData, post, processing, errors } = useForm({
-        first_name: '',
-        last_name: '',
-        birth_date: '',
-        hire_date: '',
-        dept_no: '', 
-        gender: '',  // Added gender field
+        first_name: '',  
+        last_name: '',  
+        birth_date: '', 
+        hire_date: '',   
+        dept_no: '',     
+        gender: '',      
     });
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        post('/employee');
+    const handleSubmit = (e) => { 
+        e.preventDefault(); 
+        post('/employee');  
     };
 
     return (
-        <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+        <div className="max-w-md mx-auto mt-10 p-6 rounded-lg shadow-lg" style={{ backgroundColor: '#DCE9E2' }}>
             <h1 className="text-2xl font-bold mb-6 text-gray-800">Create Employee</h1>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
                     <input
                         type="text"
-                        value={data.first_name}
+                        value={data.first_name} 
                         onChange={(e) => setData('first_name', e.target.value)}
                         disabled={processing}
                         className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
@@ -72,8 +73,8 @@ export default function Create({ departments }) {
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Department</label>
                     <select
-                        value={data.dept_no}
-                        onChange={(e) => setData('dept_no', e.target.value)}
+                        value={data.dept_no} 
+                        onChange={(e) => setData('dept_no', e.target.value)} 
                         disabled={processing}
                         className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     >
@@ -87,12 +88,12 @@ export default function Create({ departments }) {
                     {errors.dept_no && <p className="mt-1 text-sm text-red-600">{errors.dept_no}</p>}
                 </div>
 
-                {/* Gender Field */}
+
                 <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">Gender</label>
                     <select
-                        value={data.gender}
-                        onChange={(e) => setData('gender', e.target.value)}
+                        value={data.gender} 
+                        onChange={(e) => setData('gender', e.target.value)} 
                         disabled={processing}
                         className="w-full px-4 py-2 border rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                     >
@@ -108,10 +109,10 @@ export default function Create({ departments }) {
 
                 <button
                     type="submit"
-                    disabled={processing}
+                    disabled={processing} 
                     className="w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md transition duration-150 ease-in-out disabled:opacity-50"
                 >
-                    {processing ? 'Creating...' : 'Create Employee'}
+                    {processing ? 'Creating...' : 'Create Employee'} 
                 </button>
             </form>
         </div>

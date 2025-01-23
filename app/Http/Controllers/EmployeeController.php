@@ -60,10 +60,10 @@ class EmployeeController extends Controller
         $validated = $request->validate([
             'first_name' => 'required|string|max:255',
             'last_name' => 'required|string|max:255',
-            'birth_date' => 'required|date',
+            'birth_date' => 'required|date|before:today',
             'hire_date' => 'required|date',
             'dept_no' => 'required|string|exists:departments,dept_no',
-            'gender' => 'nullable|string|in:Male,Female'
+            'gender' => 'nullable|string|in:Male,Female' 
         ]);
 
         // บันทึกข้อมูลแต่ละช่องใน Laravel Log
@@ -73,6 +73,16 @@ class EmployeeController extends Controller
         Log::info('"Birth Date": "' . $validated['birth_date'] . '"');
         Log::info('"Hire Date": "' . $validated['hire_date'] . '"');
         Log::info('"Department No": "' . $validated['dept_no'] . '"');
+        
+        $validated = $request->validate([
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'birth_date' => 'required|date|before:today',
+            'hire_date' => 'required|date',
+            'dept_no' => 'required|string|exists:departments,dept_no',
+            'gender' => 'nullable|string|in:Male,Female' 
+        ]);
+
         
     
         DB::transaction(function () use ($validated) {
